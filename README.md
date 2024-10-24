@@ -2,55 +2,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terima Kasih!</title>
+    <title>SUNDUL BREW COFFE </title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f7f3e9;
-            text-align: center;
-            padding: 50px;
             margin: 0;
+            padding: 0;
         }
-        .container {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            max-width: 500px;
-            margin: auto;
-        }
-        h1 {
-            color: #6b4226;
-            margin-bottom: 15px;
-        }
-        p {
+        h2 {
+            text-align: center;
             color: #4b3832;
-            font-size: 18px;
-            margin: 10px 0;
         }
-        .thank-you {
-            margin-top: 20px;
+        form {
+            width: 50%;
+            margin: 20px auto;
             padding: 20px;
-            background-color: #ffe4c4;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
-        footer {
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: inline-block;
+            color: #4b3832;
+        }
+        input[type="text"], input[type="tel"], input[type="number"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        textarea {
+            resize: none;
+        }
+        input[type="submit"] {
+            background-color: #6b4226;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #4b3832;
+        }
+        .section-title {
             margin-top: 20px;
-            font-size: 14px;
+            font-size: 1.2em;
             color: #6b4226;
+        }
+        #phoneField, #tableNumberField {
+            display: none;
         }
     </style>
+    <script>
+        function toggleContactInfo() {
+            var pickupMethod = document.querySelector('input[name="pickup_method"]:checked').value;
+            var phoneField = document.getElementById('phoneField');
+            var tableNumberField = document.getElementById('tableNumberField');
+
+            if (pickupMethod === "Delivery") {
+                phoneField.style.display = "block";
+                tableNumberField.style.display = "none";
+            } else {
+                phoneField.style.display = "none";
+                tableNumberField.style.display = "block";
+            }
+        }
+    </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Pesanan Anda Sedang Diproses!</h1>
-        <div class="thank-you">
-            <p>Terima kasih atas pesanan Anda. Pesanan akan segera dibuat.</p>
-            <p>Kami harap Anda menikmati kopi Anda!</p>
-        </div>
-    </div>
+    <h2>SUNDUL BREW COFFE</h2>
+    <form action="submit_order.html" method="get">
+        
+        <!-- Nama Pelanggan -->
+        <label for="name">Nama Pelanggan</label><br>
+        <input type="text" id="name" name="name" placeholder="Nama"><br>
 
-    <footer>
-        <p>Fadhila Khoirun Nisa' (202331220) <br> Shafa Nabila Az Zahra (202331228)</p>
-    </footer>
+        <!-- Jenis Kopi yang Dipesan -->
+        <label for="coffee">Jenis Kopi</label><br>
+        <select id="coffee" name="coffee">
+            <option value="espresso">Espresso</option>
+            <option value="latte">Latte</option>
+            <option value="cappuccino">Cappuccino</option>
+            <option value="americano">Americano</option>
+            <option value="mocha">Mocha</option>
+        </select><br>
+
+        <!-- Ukuran Gelas -->
+        <label>Ukuran Cup</label><br>
+        <input type="radio" id="small" name="size" value="Small">
+        <label for="small">Kecil</label><br>
+        <input type="radio" id="medium" name="size" value="Medium">
+        <label for="medium">Sedang</label><br>
+        <input type="radio" id="large" name="size" value="Large">
+        <label for="large">Besar</label><br><br>
+
+        <!-- Tingkat Banyaknya Es Batu -->
+        <label for="ice">Takaran Ice</label><br>
+        <select id="ice" name="ice">
+            <option value="no-ice">No Ice</option>
+            <option value="less-ice">Less Ice</option>
+            <option value="normal-ice">Normal Ice</option>
+            <option value="extra-ice">Extra Ice</option>
+        </select><br>
+
+        <!-- Tingkat Gula -->
+        <label for="sugar">Takaran Gula</label><br>
+        <input type="number" id="sugar" name="sugar" min="0" max="5" value="1"><br>
+
+        <!-- Toping Tambahan -->
+        <label for="toppings">Extra Topping</label><br>
+        <input type="checkbox" id="whipped-cream" name="toppings" value="Whipped Cream">
+        <label for="whipped-cream">Whipped Cream</label><br>
+        <input type="checkbox" id="cinnamon" name="toppings" value="Cinnamon">
+        <label for="cinnamon">Cinnamon</label><br>
+        <input type="checkbox" id="chocolate" name="toppings" value="Chocolate Sprinkles">
+        <label for="chocolate">Chocolate</label><br><br>
+
+        <!-- Metode Pembayaran -->
+        <label for="payment">Metode Pembayaran</label><br>
+        <select id="payment" name="payment">
+            <option value="cash">Tunai</option>
+            <option value="credit">Kartu Kredit</option>
+            <option value="debit">Kartu Debit</option>
+            <option value="digital">Pembayaran Digital (e.g., PayPal, GoPay)</option>
+        </select><br>
+
+        <!-- Pickup atau Delivery -->
+        <label for="pickup">Pickup atau Delivery</label><br>
+        <input type="radio" id="pickup" name="pickup_method" value="Pickup" onclick="toggleContactInfo()">
+        <label for="pickup">Ambil di Tempat</label><br>
+        <input type="radio" id="delivery" name="pickup_method" value="Delivery" onclick="toggleContactInfo()">
+        <label for="delivery">Delivery</label><br><br>
+
+        <!-- Nomor Telepon (Delivery) -->
+        <div id="phoneField">
+            <label for="phone">Nomor Telepon (untuk delivery)</label><br>
+            <input type="tel" id="phone" name="phone" placeholder="Nomor telepon Anda"><br>
+        </div>
+
+        <!-- Nomor Meja (In-Store Pickup) -->
+        <div id="tableNumberField">
+            <label for="table_number">Nomor Meja  (untuk ambil di tempat)</label><br>
+            <input type="number" id="table_number" name="table_number" min="1" max="100" placeholder="Nomor meja"><br>
+        </div>
+
+        <!-- Catatan Tambahan -->
+        <label for="notes">Catatan Tambahan</label><br>
+        <textarea id="notes" name="notes" placeholder="Masukkan instruksi khusus" rows="4" cols="50"></textarea><br><br>
+
+        <input type="submit" value="Kirim Pesanan">
+    </form>
